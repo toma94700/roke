@@ -11,5 +11,12 @@ const game = new ex.Engine({
 });
 const loader = new ex.Loader([idleMan])
 
-game.add(new Player())
-game.start(loader)
+// ex.Physics.gravity = ex.vec(0, 800);
+
+game.start(loader).then(
+  () => {
+      game.currentScene.physics.config.solver = ex.SolverStrategy.Realistic;
+      game.currentScene.physics.config.gravity = ex.vec(0, 300);
+      game.add(new Player())
+  }
+)
