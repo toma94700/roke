@@ -1,6 +1,7 @@
 import { idleMan } from "./resources";
 import { Actor, Color, vec } from "excalibur";
 import * as ex from "excalibur";
+import { Motion } from "@capacitor/motion";
 
 export class Player extends Actor {
   constructor() {
@@ -8,9 +9,13 @@ export class Player extends Actor {
       pos: vec(200, 300),
       width: 32,
       height: 64,
-      anchor: vec(0.5, 1),
+      anchor: vec(0.5, 0.8),
       color: Color.Yellow,
       collisionType: ex.CollisionType.Active,
+    });
+    Motion.addListener('accel', event => {
+      this.vel.addEqual(ex.vec(-event.accelerationIncludingGravity.x, 
+                                event.accelerationIncludingGravity.y));
     });
   }
   onInitialize() {
