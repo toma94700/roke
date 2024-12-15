@@ -1,7 +1,17 @@
-import { idleMan } from "./resources";
 import { Actor, Color, vec } from "excalibur";
 import * as ex from "excalibur";
 import { Motion } from "@capacitor/motion";
+import { resources } from "./resources";
+
+const [idleMan0, idleMan1, idleMan2, idleMan3] = resources;
+
+const click = 100;
+const idleMan = new ex.Animation({
+  frames: [idleMan0, idleMan1, idleMan2, idleMan3, idleMan2, idleMan1].map(res=>({
+    graphic: res.toSprite(),
+    duration: click,
+  })),
+});
 
 export class Player extends Actor {
   constructor() {
@@ -13,9 +23,13 @@ export class Player extends Actor {
       color: Color.Yellow,
       collisionType: ex.CollisionType.Active,
     });
-    Motion.addListener('accel', event => {
-      this.vel.addEqual(ex.vec(-event.accelerationIncludingGravity.x, 
-                                event.accelerationIncludingGravity.y));
+    Motion.addListener("accel", (event) => {
+      this.vel.addEqual(
+        ex.vec(
+          -event.accelerationIncludingGravity.x,
+          event.accelerationIncludingGravity.y
+        )
+      );
     });
   }
   onInitialize() {
@@ -41,6 +55,6 @@ export class Player extends Actor {
       this.vel.addEqual(ex.vec(10, 0));
     }
 
-    this.graphics.use(idleMan.toSprite())
+    this.graphics.use(idleMan);
   }
 }

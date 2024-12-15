@@ -2,14 +2,14 @@ import * as ex from "excalibur";
 import { Player } from "./player";
 import { Capsule } from "./capsule";
 import "./index.css";
-import { idleMan } from "./resources";
+import { resources } from "./resources";
 ex.Flags.useCanvasGraphicsContext();
 
 const game = new ex.Engine({
   pixelArt: true,
   canvasElementId: "game",
 });
-const loader = new ex.Loader([idleMan]);
+const loader = new ex.Loader(resources);
 
 
 game.start(loader).then(
