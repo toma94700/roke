@@ -13,6 +13,6 @@ import walkMan5 from "./assets/L/obj_Walk005.png";
 import walkMan6 from "./assets/L/obj_Walk006.png";
 import walkMan7 from "./assets/L/obj_Walk007.png";
 
-export const resources = [idleMan0, idleMan1, idleMan2, idleMan3,walkMan0,walkMan1,walkMan2,walkMan3,walkMan4,walkMan5,walkMan6,walkMan7].map(
+export const resources = [idleMan0, idleMan1, idleMan2, idleMan3, walkMan0, walkMan1, walkMan2, walkMan3, walkMan4, walkMan5, walkMan6, walkMan7].map(
     (resource) => new ex.ImageSource(resource)
 );
