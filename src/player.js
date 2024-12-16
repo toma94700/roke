@@ -3,7 +3,8 @@ import * as ex from "excalibur";
 import { Motion } from "@capacitor/motion";
 import { resources } from "./resources";
 
-const [idleMan0, idleMan1, idleMan2, idleMan3,walkMan0,walkMan1,walkMan2,walkMan3,walkMan4,walkMan5,walkMan6,walkMan7] = resources;
+const [idleMan0, idleMan1, idleMan2, idleMan3, walkMan0, walkMan1, walkMan2,
+       walkMan3, walkMan4, walkMan5, walkMan6, walkMan7] = resources;
 
 const click = 100;
 const idleMan = new ex.Animation({
@@ -13,7 +14,7 @@ const idleMan = new ex.Animation({
   })),
 });
 const walkMan = new ex.Animation({
-  frames: [walkMan0,walkMan1,walkMan2,walkMan3,walkMan4,walkMan5,walkMan6,walkMan7].map(res=>({
+  frames: [walkMan0, walkMan1, walkMan2, walkMan3, walkMan4, walkMan5, walkMan6, walkMan7].map(res=>({
     graphic: res.toSprite(),
     duration: click,
   })),
