@@ -75,5 +75,10 @@ export class Player extends Actor {
     else {
       this.graphics.use(idleMan);
     }
+    if (this.vel.x > 0.1) {
+      this.graphics.flipHorizontal = false;
+    } else if (this.vel.x < -0.1) {
+      this.graphics.flipHorizontal = true;
+    }
   }
 }
