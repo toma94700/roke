@@ -2,15 +2,18 @@ import { Actor, Color, vec } from "excalibur";
 import * as ex from "excalibur";
 import { Motion } from "@capacitor/motion";
 import { resources } from "./resources";
+import { isSafari } from "./permission";
 
 const [idleMan0, idleMan1, idleMan2, idleMan3] = resources;
 
 const click = 100;
 const idleMan = new ex.Animation({
-  frames: [idleMan0, idleMan1, idleMan2, idleMan3, idleMan2, idleMan1].map(res=>({
-    graphic: res.toSprite(),
-    duration: click,
-  })),
+  frames: [idleMan0, idleMan1, idleMan2, idleMan3, idleMan2, idleMan1].map(
+    (res) => ({
+      graphic: res.toSprite(),
+      duration: click,
+    })
+  ),
 });
 
 export class Player extends Actor {
@@ -24,16 +27,22 @@ export class Player extends Actor {
       collisionType: ex.CollisionType.Active,
     });
     Motion.addListener("accel", (event) => {
-      this.vel.addEqual(
-        ex.vec(
-          -event.accelerationIncludingGravity.x,
-          event.accelerationIncludingGravity.y
-        )
-      );
+      if (isSafari) {
+        this.vel.addEqual(
+          ex.vec(
+            event.accelerationIncludingGravity.x,
+            -event.accelerationIncludingGravity.y
+          )
+        );
+      } else {
+        this.vel.addEqual(
+          ex.vec(
+            -event.accelerationIncludingGravity.x,
+            event.accelerationIncludingGravity.y
+          )
+        );
+      }
     });
-  }
-  onInitialize() {
-    this.body.useGravity = true;
   }
   update(engine, delta) {
     if (
