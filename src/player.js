@@ -69,7 +69,11 @@ export class Player extends Actor {
     ) {
       this.vel.addEqual(ex.vec(10, 0));
     }
-
-    this.graphics.use(walkMan);
+    if (Math.abs(this.vel.x) > 0.1) {
+      this.graphics.use(walkMan);
+    }
+    else {
+      this.graphics.use(idleMan);
+    }
   }
 }
