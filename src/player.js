@@ -7,7 +7,7 @@ import { isSafari } from "./permission";
 const [idleMan0, idleMan1, idleMan2, idleMan3, walkMan0, walkMan1, walkMan2,
   walkMan3, walkMan4, walkMan5, walkMan6, walkMan7, runMan0, 
   runMan1, runMan2, runMan3, runMan4, runMan5, runMan6, runMan7,
-  flyMan0, flyMan1] = resources;
+  flyMan0, flyMan1, jumpMan0, jumpMan1] = resources;
 
 const click = 100;
 const idleMan = new ex.Animation({
@@ -34,6 +34,12 @@ const flyMan = new ex.Animation({
   frames: [flyMan0, flyMan1].map(res=>({
    graphic: res.toSprite(),
    duration:click
+ })),
+});
+const jumpMan = new ex.Animation({
+ frames: [jumpMan0, jumpMan1].map(res=>({
+  graphic: res.toSprite(),  
+  duration:click
  })),
 });
 export class Player extends Actor {

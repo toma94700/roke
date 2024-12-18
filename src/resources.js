@@ -22,10 +22,13 @@ import runMan6 from "./assets/L/obj_Run006.png";
 import runMan7 from "./assets/L/obj_Run007.png";
 import flyMan0 from "./assets/L/obj_Flying000.png";
 import flyMan1 from "./assets/L/obj_Flying001.png";
+import jumpMan0 from "./assets/L/obj_jump000.png";
+import jumpMan1 from "./assets/l/obj_jump100.png";
+
 
 export const resources = [idleMan0, idleMan1, idleMan2, idleMan3,
   walkMan0, walkMan1, walkMan2, walkMan3, walkMan4, walkMan5, walkMan6, walkMan7,
   runMan0, runMan1, runMan2, runMan3, runMan4, runMan5, runMan6, runMan7,
-flyMan0,flyMan1].map(
+flyMan0, flyMan1,jumpMan0, jumpMan1 ].map(
     (resource) => new ex.ImageSource(resource)
 );
